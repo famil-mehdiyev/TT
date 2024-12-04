@@ -1,0 +1,14 @@
+services:
+  relationapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: relationapp:latest
+    ports:
+      - "8083:80"    # Host port 8083 yönləndirilir container port 80
+      - "8084:443"   # HTTPS üçün (container port 443)
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ./logs:/app/logs
+    restart: always
